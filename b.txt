@@ -1,0 +1,25 @@
+System.out.println("Current Bucket is :" + ((String)globalMap.get("tS3List_1_CURRENT_BUCKET")) );
+System.out.println("Current key is :" + ((String)globalMap.get("row2.key")) );
+
+
+//Spliting the Current Key into 2 parts to get the exact file name and remove the folder name.
+String[] parts = ((String)globalMap.get("row2.key")).split("/");
+context.Folder = parts[0];
+context.FullFilename = ((String)globalMap.get("row2.key")).substring(((String)globalMap.get("row2.key")).lastIndexOf("/")+1);
+
+//Spliting the Current fullname into 2 parts to get the exact file name and filetype.
+String[] FullFilename_parts = context.FullFilename.split("\\.");
+context.Filename = parts[1];
+context.Filetype = parts[2];
+
+
+
+System.out.println("Folder of key is :" + context.Folder );
+System.out.println("FullFilename of key is :" + context.FullFilename );
+System.out.println("Filename of key is :" + context.Filename );
+System.out.println("Filetype of key is :" + context.Filetype );
+System.out.println("************************");
+
+
+
+((String)globalMap.get("tS3List_1_CURRENT_KEY")).substring(((String)globalMap.get("tS3List_1_CURRENT_KEY")).lastIndexOf("/")+0);
